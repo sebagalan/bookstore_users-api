@@ -5,6 +5,7 @@ import (
 
 	"github.com/sebagalan/bookstore_users-api/types"
 	"github.com/sebagalan/bookstore_users-api/utils/errors"
+	"github.com/sebagalan/bookstore_users-api/utils/errors/date_utils"
 )
 
 var (
@@ -27,6 +28,8 @@ func (u *User) Save() *types.RestError {
 		}
 		return errors.NewBadRequestError(fmt.Sprintf("user %d already exist", u.ID))
 	}
+
+	u.DateCreated = date_utils.GetNowSrting()
 
 	usersDB[u.ID] = u
 	return nil
