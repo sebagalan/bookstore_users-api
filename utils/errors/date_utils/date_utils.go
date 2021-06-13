@@ -4,8 +4,10 @@ import (
 	"time"
 )
 
+//APIDateFormat ...
 const (
-	apiDateFormat = "2006-01-02T15:04:05Z"
+	APIDateFormat = "2006-01-02T15:04:05Z"
+	APIDBLayout   = "2006-01-02 15:04:05"
 )
 
 //GetNow ...
@@ -15,5 +17,10 @@ func GetNow() time.Time {
 
 //GetNowSrting ..
 func GetNowSrting() string {
-	return GetNow().Format(apiDateFormat)
+	return GetNow().Format(APIDateFormat)
+}
+
+//GetNowSrting ..
+func GetNowDBSrting() string {
+	return GetNow().Format(APIDBLayout)
 }

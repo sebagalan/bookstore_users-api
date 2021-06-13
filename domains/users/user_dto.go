@@ -3,7 +3,6 @@ package users
 import (
 	"strings"
 
-	"github.com/sebagalan/bookstore_users-api/types"
 	"github.com/sebagalan/bookstore_users-api/utils/errors"
 )
 
@@ -14,15 +13,26 @@ type User struct {
 	LastName    string `json:"last_name"`
 	Email       string `json:"email"`
 	DateCreated string `json:"date_created"`
+	Status      string `json:"status"`
+	Password    string `json:"password"`
+}
+
+type RegisterUser struct {
+	ID          int64  `json:"id"`
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name"`
+	Email       string `json:"email"`
+	DateCreated string `json:"date_created"`
+	Status      string `json:"status"`
 }
 
 //Dto ..
 type Dto interface {
-	Validate() *types.RestError
+	Validate() *errors.RestError
 }
 
 //Validate ...
-func (u *User) Validate() *types.RestError {
+func (u *User) Validate() *errors.RestError {
 
 	email := strings.TrimSpace(strings.ToLower(u.Email))
 
